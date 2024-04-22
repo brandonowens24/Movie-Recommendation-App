@@ -5,7 +5,7 @@ See [Huggingface Spaces](https://huggingface.co/spaces/brandonowens/movie-recomm
 Simply enter a valid movie or show (with the correct type option selected), the model you wish to use to find similar movies or shows, and the method of similarity.
 Then, click submit and in 1-5 seconds, the model will **return 5 movies or shows (with their respective posters) that are the most similar to your inputted movie or show!**
 
-![Output](example.png)
+![Output](images/example.png)
 
 ### Having Trouble?
 
@@ -26,7 +26,7 @@ Then, click submit and in 1-5 seconds, the model will **return 5 movies or shows
 > 
 ### Model and Similarity Metric Understanding:
 
-![Flowchart](flowchart.png)
+![Flowchart](images/flowchart.png)
 
 To create the application, data was scraped from [TMDB API](https://developer.themoviedb.org/reference/intro/getting-started) to obtain the names of movies and television shows.
 With the desired names and ids, plot information was scraped from the [OMBD API](https://www.omdbapi.com/). This resulted in ~1.02 million movies and ~170k shows in my dataset.
@@ -75,7 +75,7 @@ I ended up choosing...
 * 
 Although this isn't the largest cluster of data to sample from, the results looked like this...
 
-![eval](eval.png)
+![eval](images/eval.png)
 
 Modeling that the Word2Vec Count model with cosine similarity had the best accuracy for both the movies and shows provided. While this may be subject to change with more data added,
 especially because the Euclidian metric and the Word2Vec TFIDF models were pretty close, it becomes pretty apparent that the Doc2Vec model underperforms in both areas. Thus, it would be advised to use one of the Word2Vec 
