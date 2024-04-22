@@ -28,8 +28,8 @@ Then, click submit and in 1-5 seconds, the model will **return 5 movies or shows
 
 ![Flowchart](flowchart.png)
 
-To create the application, data was scraped from [TMDB API]("https://developer.themoviedb.org/reference/intro/getting-started") to obtain the names of movies and television shows.
-With the desired names and ids, plot information was scraped from the [OMBD API]("https://www.omdbapi.com/"). This resulted in ~1.02 million movies and ~170k shows in my dataset.
+To create the application, data was scraped from [TMDB API](https://developer.themoviedb.org/reference/intro/getting-started) to obtain the names of movies and television shows.
+With the desired names and ids, plot information was scraped from the [OMBD API](https://www.omdbapi.com/). This resulted in ~1.02 million movies and ~170k shows in my dataset.
 I then processed the information in order to get a training corpus. This involved dropping missing columns such as "Title", "Plot", "Genre", "Type", and "Director", dropping "Title" duplicates,
 filtering for origin country to be "United States" or "Japan" or the filtered original language being "English". 
 
@@ -84,9 +84,9 @@ This is most likely because there were only ~20,000 show descriptions to use for
 
 ### Contributions:
 
-* The idea of using a TFIDF approach instead of just comparing to pre-trained embeddings was found from [Dhilip Subramanian's Book Recommendation System]("https://www.kdnuggets.com/2020/08/content-based-recommendation-system-word-embeddings.html").
+* The idea of using a TFIDF approach instead of just comparing to pre-trained embeddings was found from [Dhilip Subramanian's Book Recommendation System](https://www.kdnuggets.com/2020/08/content-based-recommendation-system-word-embeddings.html).
 * All models were built using Gensim.
-* 
+  
 ### Limitations:
 
 * Show Models:
@@ -99,7 +99,6 @@ This is most likely because there were only ~20,000 show descriptions to use for
 ### Additional Information:
 
 * All models were trained on an NVIDIA RTX 2070 GPU. 
-* See my [GitHub]("https://github.com/brandonowens24/movie-recommendation-app")!
 * Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
 
 ### Files
