@@ -1,6 +1,6 @@
 # Welcome to the Movie Recommendation System
 
-See [Hugginface Spaces]("https://huggingface.co/spaces/brandonowens/movie-recommendation-app") to run the app!
+See [Huggingface Spaces](https://huggingface.co/spaces/brandonowens/movie-recommendation-app) to run the app!
 
 Simply enter a valid movie or show (with the correct type option selected), the model you wish to use to find similar movies or shows, and the method of similarity.
 Then, click submit and in 1-5 seconds, the model will **return 5 movies or shows (with their respective posters) that are the most similar to your inputted movie or show!**
