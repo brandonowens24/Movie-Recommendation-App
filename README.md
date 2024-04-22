@@ -2,6 +2,17 @@
 
 See [Huggingface Spaces](https://huggingface.co/spaces/brandonowens/movie-recommendation-app) to run the app!
 
+## Instructions to Create the Models
+
+1. Download the TMDB [Movies](https://www.kaggle.com/datasets/asaniczka/tmdb-movies-dataset-2023-930k-movies) and [Shows](https://www.kaggle.com/datasets/asaniczka/full-tmdb-tv-shows-dataset-2023-150k-shows) datasets from Kaggle.
+2. Obtain an [OMDB API KEY](https://www.omdbapi.com/apikey.aspx)
+3. Update [apicalls.py](https://github.com/brandonowens24/movie-recommendation-app/blob/main/apicalls.py) with your api key under "mykey" variable to create your own movies and shows json files
+4. Run [create_embeddings.ipynb](https://github.com/brandonowens24/movie-recommendation-app/blob/main/create_embeddings.ipynb)
+5. Use [test_wvs.ipynb](https://github.com/brandonowens24/movie-recommendation-app/blob/main/test_wvs.ipynb) to save the numpy matrices from the models produced in `create_embeddings.ipynb`.
+6. If interested in making your own app: See [Huggingface Spaces](https://huggingface.co/spaces/brandonowens/movie-recommendation-app) files for implementation!  
+
+### Using the App!
+
 Simply enter a valid movie or show (with the correct type option selected), the model you wish to use to find similar movies or shows, and the method of similarity.
 Then, click submit and in 1-5 seconds, the model will **return 5 movies or shows (with their respective posters) that are the most similar to your inputted movie or show!**
 
@@ -102,3 +113,7 @@ This is most likely because there were only ~20,000 show descriptions to use for
 * Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
 
 ### Files
+* [images/](https://github.com/brandonowens24/movie-recommendation-app/tree/main/images): Contains images for readme
+* [apicalls.py](https://github.com/brandonowens24/movie-recommendation-app/blob/main/apicalls.py): For scraping relevant movie and show data to json 
+* [create_embeddings.ipynb](https://github.com/brandonowens24/movie-recommendation-app/blob/main/create_embeddings.ipynb): For cleaning json and creating the word2vec and doc2vec models
+* [test_wvs](https://github.com/brandonowens24/movie-recommendation-app/blob/main/test_wvs.ipynb): For testing similarity functions and exporting numpy matrices of word2vec models
