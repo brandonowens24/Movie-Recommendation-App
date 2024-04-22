@@ -23,9 +23,9 @@ df = pd.read_csv("TMDB_tv_dataset_v3.csv")
 
 names = df["name"]
 
-mykey = '1ff0ec52'
+mykey = ''' INSERT YOUR OWN KEY HERE'''
 
-for name in tqdm(names[139240:]):
+for name in tqdm(names[]):
     showInfo = requests.get(f"http://www.omdbapi.com/?apikey={mykey}&t={name}&plot=full")
 
     if showInfo.status_code == 200:
