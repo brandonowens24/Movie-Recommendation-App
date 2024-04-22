@@ -34,7 +34,8 @@ Then, click submit and in 1-5 seconds, the model will **return 5 movies or shows
 > **Correct:** star wars: episode III - revenge of the sith
 > 
 > **Incorrect:** Star Wars Episode 3 - Revenge of the sith
-> 
+
+
 ### Model and Similarity Metric Understanding:
 
 ![Flowchart](images/flowchart.png)
@@ -83,7 +84,7 @@ I ended up choosing...
 * Better Call Saul (Drama, Crime)
 * Breaking Bad (Drama, Crime)
 * Attack on Titan (Animated, War, Action)
-* 
+  
 Although this isn't the largest cluster of data to sample from, the results looked like this...
 
 ![eval](images/eval.png)
