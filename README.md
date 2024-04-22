@@ -22,18 +22,16 @@ Then, click submit and in 1-5 seconds, the model will **return 5 movies or shows
 
 * Make sure that if you are entering a movie, the `Movie` tab is selected (and the `Show` tab for shows).
     * It is possible that your movie/show doesn't exist in the database (last updated 4/22/2024).
-    * Ex:
-> "No Country for Old Men" is a movie and must have the `Movie` button selected under type.
+      
+> Ex: "No Country for Old Men" is a movie and must have the `Movie` button selected under type.
 
 * Make sure the title is formatted correctly:
     * Caps do not matter
     * Punctuation and numbers do
-    * Ex:
-> **Correct:** Star Wars: Episode III – Revenge of the Sith
-> 
-> **Correct:** star wars: episode III - revenge of the sith
-> 
-> **Incorrect:** Star Wars Episode 3 - Revenge of the sith
+      
+> Ex: **Correct:** Star Wars: Episode III – Revenge of the Sith 
+> Ex: **Correct:** star wars: episode III - revenge of the sith
+> Ex: **Incorrect:** Star Wars Episode 3 - Revenge of the sith
 
 
 ### Model and Similarity Metric Understanding:
@@ -42,12 +40,13 @@ Then, click submit and in 1-5 seconds, the model will **return 5 movies or shows
 
 To create the application, data was scraped from [TMDB API](https://developer.themoviedb.org/reference/intro/getting-started) to obtain the names of movies and television shows.
 With the desired names and ids, plot information was scraped from the [OMBD API](https://www.omdbapi.com/). This resulted in ~1.02 million movies and ~170k shows in my dataset.
-I then processed the information in order to get a training corpus. This involved dropping missing columns such as "Title", "Plot", "Genre", "Type", and "Director", dropping "Title" duplicates,
-filtering for origin country to be "United States" or "Japan" or the filtered original language being "English". 
 
-I then created a column called "Description" that fused together the genre,
-type, director, plot, and keywords for each movie/show. This left me with ~200k movies and ~20k shows. I then tokenized these descriptions, lowercasing and removing punctuation.
-I tried a purely NLP approach -- no other features were encoded besides these descriptions. Because of the timeline on getting this project in, I didn't have the time to incorporate other features or test compared to
+
+I then processed the information to get a training corpus. This involved dropping missing columns such as "Title", "Plot", "Genre", "Type", and "Director", dropping "Title" duplicates,
+filtering for origin country to be "United States" or "Japan" or the filtered original language being "English". My features were then created from a column I named "Description" that fused together the genre,
+type, director, plot, and keywords for each movie/show. The format looked something like: "A {x['Genre']} {x['Type']} directed by {x['Director']} with keywords consisting of {x['keywords']}. {x['Plot']}"`. This left me with ~200k movies and ~20k shows. I then tokenized these descriptions, lowercasing and removing punctuation.
+
+I tried a purely NLP approach -- no other features were encoded besides these descriptions. Because of the timeline for getting this project in, I didn't have the time to incorporate other features or test compared to
 pre-trained word embeddings. This may have been slightly problematic because it creates a bias and dependency on how well the movie's "full" plot description captures the information of the movie. Perhaps some movies or shows
 give less information to create mystery and interest and perhaps some writers are just bad at summarization tasks.
 
@@ -62,18 +61,20 @@ I then took these corpora and applied them separately to 3 different models with
     * Cosine: Utilizes cosine similarity to retrieve the top 5 most similar movies/shows.
     * Euclidian: Utilizes the distance formula to find the smallest distance between movie/show embeddings to retrieve the top 5 most similar movies/shows.
       
+Keep in mind, the only features used for these models was the description column that I made for each movie and show (and modeled separately -- movies and shows apart).
 I saved the Doc2Vec models and the different document embeddings for the separate word2vec models as numpy matrices for faster processing in my Gradio app. These were all imported to Huggingface spaces
-where I then built my Gradio app seen here. 
+where I then built my Gradio app seen on [Huggingface](https://huggingface.co/spaces/brandonowens/movie-recommendation-app?logs=container).
 
 ### Evaluation
 
 Which model works the best? It depends.
 
 Because this is a recommendation system and I don't have access to any sort of user data, I think the easiest, quick, and dirty way to see which metrics perform the best is to run the tool with my own preferences.
-I wanted to query my app with 5 movies I like and 5 shows I also enjoy (about different genres). I then recorded the total of the 5 recommendations that I have watched, sounded interesting and related, or models relevant plot similarity to my inputted movie/show.
+I wanted to query my app with 5 movies I like and 5 shows I also enjoy (about different genres). For each of these movies and shows using each model and similarity metric, I wanted to see
+how many of the 5 recommendations the system outputted that I have watched (indicating it was successful), sounded similar and relevant to my input's plot, or sounded interesting and related. I then added this number of across all of the movies
+and all of the shows to get an accuracy for each model regarding each type separately. 
 
-I ended up choosing... 
-
+I ended up choosing the mediums: 
 * No Country for Old Men (Western, Thriller)
 * Interstellar (Sci-Fi)
 * When Harry Met Sally... (Romance)
@@ -96,8 +97,9 @@ This is most likely because there were only ~20,000 show descriptions to use for
 
 ### Contributions:
 
+* The TMDB [Movies](https://www.kaggle.com/datasets/asaniczka/tmdb-movies-dataset-2023-930k-movies) and [Shows](https://www.kaggle.com/datasets/asaniczka/full-tmdb-tv-shows-dataset-2023-150k-shows) datasets from Kaggle allowed for me to not have to scrape the entiretly of TMDB.
 * The idea of using a TFIDF approach instead of just comparing to pre-trained embeddings was found from [Dhilip Subramanian's Book Recommendation System](https://www.kdnuggets.com/2020/08/content-based-recommendation-system-word-embeddings.html).
-* All models were built using Gensim.
+* All models were built using Gensim. 
   
 ### Limitations:
 
