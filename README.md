@@ -29,8 +29,10 @@ Then, click submit and in 1-5 seconds, the model will **return 5 movies or shows
     * Caps do not matter
     * Punctuation and numbers do
       
-> Ex: **Correct:** Star Wars: Episode III – Revenge of the Sith 
+> Ex: **Correct:** Star Wars: Episode III – Revenge of the Sith
+> 
 > Ex: **Correct:** star wars: episode III - revenge of the sith
+> 
 > Ex: **Incorrect:** Star Wars Episode 3 - Revenge of the sith
 
 
