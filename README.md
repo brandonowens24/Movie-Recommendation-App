@@ -2,23 +2,14 @@
 
 See [Huggingface Spaces](https://huggingface.co/spaces/brandonowens/movie-recommendation-app) to run the app!
 
-## Instructions to Create the Models
-
-1. Download the TMDB [Movies](https://www.kaggle.com/datasets/asaniczka/tmdb-movies-dataset-2023-930k-movies) and [Shows](https://www.kaggle.com/datasets/asaniczka/full-tmdb-tv-shows-dataset-2023-150k-shows) datasets from Kaggle.
-2. Obtain an [OMDB API KEY](https://www.omdbapi.com/apikey.aspx)
-3. Update [apicalls.py](https://github.com/brandonowens24/movie-recommendation-app/blob/main/apicalls.py) with your api key under "mykey" variable to create your own movies and shows json files
-4. Run [create_embeddings.ipynb](https://github.com/brandonowens24/movie-recommendation-app/blob/main/create_embeddings.ipynb)
-5. Use [test_wvs.ipynb](https://github.com/brandonowens24/movie-recommendation-app/blob/main/test_wvs.ipynb) to save the numpy matrices from the models produced in `create_embeddings.ipynb`.
-6. If interested in making your own app: See [Huggingface Spaces](https://huggingface.co/spaces/brandonowens/movie-recommendation-app) files for implementation!  
-
-### Using the App!
+## Using the App!
 
 Simply enter a valid movie or show (with the correct type option selected), the model you wish to use to find similar movies or shows, and the method of similarity.
 Then, click submit and in 1-5 seconds, the model will **return 5 movies or shows (with their respective posters) that are the most similar to your inputted movie or show!**
 
 ![Output](images/example.png)
 
-### Having Trouble?
+## Having Trouble?
 
 * Make sure that if you are entering a movie, the `Movie` tab is selected (and the `Show` tab for shows).
     * It is possible that your movie/show doesn't exist in the database (last updated 4/22/2024).
@@ -66,6 +57,15 @@ I then took these corpora and applied them separately to 3 different models with
 Keep in mind, the only features used for these models was the description column that I made for each movie and show (and modeled separately -- movies and shows apart).
 I saved the Doc2Vec models and the different document embeddings for the separate word2vec models as numpy matrices for faster processing in my Gradio app. These were all imported to Huggingface spaces
 where I then built my Gradio app seen on [Huggingface](https://huggingface.co/spaces/brandonowens/movie-recommendation-app?logs=container).
+
+## Instructions to Create the Models Yourself!
+
+1. Download the TMDB [Movies](https://www.kaggle.com/datasets/asaniczka/tmdb-movies-dataset-2023-930k-movies) and [Shows](https://www.kaggle.com/datasets/asaniczka/full-tmdb-tv-shows-dataset-2023-150k-shows) datasets from Kaggle.
+2. Obtain an [OMDB API KEY](https://www.omdbapi.com/apikey.aspx)
+3. Update [apicalls.py](https://github.com/brandonowens24/movie-recommendation-app/blob/main/apicalls.py) with your api key under "mykey" variable to create your own movies and shows json files
+4. Run [create_embeddings.ipynb](https://github.com/brandonowens24/movie-recommendation-app/blob/main/create_embeddings.ipynb)
+5. Use [test_wvs.ipynb](https://github.com/brandonowens24/movie-recommendation-app/blob/main/test_wvs.ipynb) to save the numpy matrices from the models produced in `create_embeddings.ipynb`.
+6. If interested in making your own app: See [Huggingface Spaces](https://huggingface.co/spaces/brandonowens/movie-recommendation-app) files for implementation! 
 
 ### Evaluation
 
